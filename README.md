@@ -1,6 +1,8 @@
 MSON Schema
 ===========
-A [JSON schema](https://json-schema.org/) for [MSON](https://github.com/MineLittlePony/Mson) models
+A [JSON schema](https://json-schema.org/) for [MSON](https://github.com/MineLittlePony/Mson) models.
+
+Source: https://github.com/Tschrock/mson-json-schema
 
 ## Usage
 
