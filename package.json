@@ -1,0 +1,8 @@
+{
+  "name": "mson-json-schema",
+  "version": "1.0.0",
+  "description": "JSON schema definitions for MSON models.",
+  "scripts": {},
+  "author": "Tschrock <tschrock123@gmail.com>",
+  "license": "MIT"
+}

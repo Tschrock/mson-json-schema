@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/component_types/mson_cone.json",
+    "title": "mson:cone",
+    "description": "Specialisation of a cube with a tapered end.",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "mson:cone"
+        },
+        "from": {
+            "title": "From",
+            "description": "The 3D coordinate of where the box should begin.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "size": {
+            "title": "Size",
+            "description": "The 3D size of the box.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "texture": {
+            "title": "Texture Overrides",
+            "description": "The pptional texture overrides.\nIf not defined, will use what is inherited from the parent context.",
+            "$ref": "../texture.json"
+        },
+        "mirror": {
+            "title": "Mirror",
+            "description": "The optional texture mirroring of the box along the X axis (mojang behaviour).\nIf not defined, will use what is inherited from the parent context.",
+            "type": "boolean",
+            "default": false
+        },
+        "dilate": {
+            "title": "Dilate",
+            "description": "The 3D dilation of the box along all of the major axis.\nIf not defined, will use what is inherited from the parent context.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "taper": {
+            "title": "Taper",
+            "description": "The amount by which the box must taper.\nA value of 0 will produce the same result as a normal cube.",
+            "type": "number"
+        }
+    },
+    "patternProperties": {
+        "^__": true
+    },
+    "additionalProperties": false,
+    "defaultSnippets": [
+        {
+            "label": " mson:cone",
+            "bodyText": "{\n    \"type\": \"mson:cone\",\n    $0\n}"
+        }
+    ]
+}

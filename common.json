@@ -1,0 +1,282 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/common.json",
+    "definitions": {
+        "identifier": {
+            "title": "Identifier",
+            "description": "A namespaced Minecraft identifier.",
+            "type": "string",
+            "pattern": "^([a-z0-9_.-]+?:)?[a-z0-9/._-]+$",
+            "examples": [
+                "minecraft:skeleton"
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " namespace:id",
+                    "body": "${1:namespace}:${2:id}"
+                }
+            ],
+            "patternErrorMessage": "Must be a valid Minecraft identifier. Valid identifiers are alphanumeric (plus _ - . or /), with an optional namespace prefix. For example: \"minecraft:cool_thing\""
+        },
+        "javaClass": {
+            "title": "Java Class",
+            "description": "A fully qualified Java class name.",
+            "type": "string",
+            "pattern": "^([\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Sc}\\p{Pc}][\\p{L}\\p{Sc}\\p{Pc}\\p{Nd}\\p{Nl}\\p{Mc}\\p{Mn}\\u0000-\\u0008\\u000E-\\u001B\\u007F-\\u009F\\p{Cf}]*)(\\.[\\p{Lu}\\p{Ll}\\p{Lt}\\p{Lm}\\p{Lo}\\p{Nl}\\p{Sc}\\p{Pc}][\\p{L}\\p{Sc}\\p{Pc}\\p{Nd}\\p{Nl}\\p{Mc}\\p{Mn}\\u0000-\\u0008\\u000E-\\u001B\\u007F-\\u009F\\p{Cf}]*)*$",
+            "patternErrorMessage": "Must be a valid Java class name."
+        },
+        "variable": {
+            "title": "Variable",
+            "description": "An MSON model variable.",
+            "type": "string",
+            "pattern": "^#",
+            "examples": [
+                "#variable"
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " #variable",
+                    "body": "#${1:variable}"
+                }
+            ],
+            "patternErrorMessage": "MSON variables must start with a #."
+        },
+        "float2d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 1,
+                    "maxItems": 2
+                },
+                {
+                    "type": "number"
+                }
+            ],
+            "default": [
+                0,
+                0
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [0, 0]",
+                    "bodyText": "[${1:0}, ${2:0}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "float3d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 1,
+                    "maxItems": 3
+                },
+                {
+                    "type": "number"
+                }
+            ],
+            "default": [
+                0,
+                0,
+                0
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [0, 0, 0]",
+                    "bodyText": "[${1:0}, ${2:0}, ${3:0}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "value": {
+            "title": "Value",
+            "description": "An mson value. Can be a number or a string variable name.",
+            "oneOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "$ref": "#/definitions/variable"
+                }
+            ]
+        },
+        "value2d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/value"
+                    },
+                    "minItems": 1,
+                    "maxItems": 2
+                },
+                {
+                    "$ref": "#/definitions/value"
+                }
+            ],
+            "default": [
+                0,
+                0
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [0, 0]",
+                    "bodyText": "[${1:0}, ${2:0}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "value3d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/value"
+                    },
+                    "minItems": 1,
+                    "maxItems": 3
+                },
+                {
+                    "$ref": "#/definitions/value"
+                }
+            ],
+            "default": [
+                0,
+                0,
+                0
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [0, 0, 0]",
+                    "bodyText": "[${1:0}, ${2:0}, ${3:0}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "bool2d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    },
+                    "minItems": 1,
+                    "maxItems": 2
+                },
+                {
+                    "type": "boolean"
+                }
+            ],
+            "default": [
+                false,
+                false
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [false, false]",
+                    "bodyText": "[${1:false}, ${2:false}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "bool3d": {
+            "oneOf": [
+                {
+                    "type": "array",
+                    "items": {
+                        "type": "boolean"
+                    },
+                    "minItems": 1,
+                    "maxItems": 3
+                },
+                {
+                    "type": "boolean"
+                }
+            ],
+            "default": [
+                false,
+                false,
+                false
+            ],
+            "defaultSnippets": [
+                {
+                    "label": " [false, false, false]",
+                    "bodyText": "[${1:false}, ${2:false}, ${3:false}]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        },
+        "locals": {
+            "title": "Locals",
+            "description": "A map of local variables.",
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "expression.json"
+            }
+        },
+        "children": {
+            "type": "object",
+            "additionalProperties": {
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/variable"
+                    },
+                    {
+                        "$ref": "component_types/mson_compound.json"
+                    },
+                    {
+                        "$ref": "component_types/mson_slot.json",
+                        "required": [
+                            "type"
+                        ]
+                    },
+                    {
+                        "$ref": "component_types/mson_planar.json",
+                        "required": [
+                            "type"
+                        ]
+                    }
+                ]
+            }
+        },
+        "cubes": {
+            "title": "Cubes",
+            "description": "A list of boxes or box-compatible components to display inside this compound.",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    {
+                        "$ref": "#/definitions/variable"
+                    },
+                    {
+                        "$ref": "component_types/mson_box.json"
+                    },
+                    {
+                        "$ref": "component_types/mson_cone.json",
+                        "required": [
+                            "type"
+                        ]
+                    },
+                    {
+                        "$ref": "component_types/mson_plane.json",
+                        "required": [
+                            "type"
+                        ]
+                    },
+                    {
+                        "$ref": "component_types/mson_slot.json",
+                        "required": [
+                            "type"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

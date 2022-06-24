@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/component_types/mson_compound.json",
+    "title": "mson:compound",
+    "description": "Represents a transformable node in a model.",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "mson:compound"
+        },
+        "pivot": {
+            "title": "Pivot",
+            "description": "The 3D center of rotation of this part.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "dilate": {
+            "title": "Dilate",
+            "description": "The 3D dilation of this part along each of the primary axis.\nThese values are inherited by all of this part's children who's own dilation is then taken as an offset of this one.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "rotate": {
+            "title": "Rotation",
+            "description": "The 3D rotation of this part in degrees.",
+            "$ref": "../common.json#/definitions/value3d"
+        },
+        "mirror": {
+            "title": "Mirror",
+            "description": "The 3D mirroring of this part's textures along each of the major axis.\nThis value is inherited by all of this part's children that do not define their own mirroring.",
+            "$ref": "../common.json#/definitions/bool3d"
+        },
+        "visible": {
+            "title": "Visible",
+            "description": "The visibility of this part.",
+            "type": "boolean",
+            "default": true
+        },
+        "texture": {
+            "title": "Texture",
+            "description": "The optional texture with parameters inherited from the slot's outer context.\nThis texture is inherited by any children of this compound and their texture definitions are combined with this one's.",
+            "$ref": "../texture.json"
+        },
+        "name": {
+            "title": "Name",
+            "description": "The name that this compound is to be exposed as.",
+            "type": "string"
+        },
+        "children": {
+            "title": "Children",
+            "description": "The child components of this part.\nCan be any component that produces a ModelPart.\nThe default type for a child component is mson:compound (same as the parent).",
+            "$ref": "../common.json#/definitions/children"
+        },
+        "cubes": {
+            "title": "Cubes",
+            "description": "The cubes that form the visible structure of this part.\nCan be any component that produces a Cuboid.\nThe default type for cubes is mson:box.",
+            "$ref": "../common.json#/definitions/cubes"
+        }
+    },
+    "patternProperties": {
+        "^__": true
+    },
+    "additionalProperties": false,
+    "defaultSnippets": [
+        {
+            "label": " mson:compound",
+            "bodyText": "{\n    $0\n}"
+        }
+    ]
+}

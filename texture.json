@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/texture.json",
+    "title": "Texture",
+    "description": "A texture.",
+    "type": "object",
+    "properties": {
+        "u": {
+            "type": "integer",
+            "default": 0
+        },
+        "v": {
+            "type": "integer",
+            "default": 0
+        },
+        "w": {
+            "type": "integer",
+            "default": 64
+        },
+        "h": {
+            "type": "integer",
+            "default": 32
+        }
+    },
+    "additionalProperties": false,
+    "examples": [
+        {
+            "u": 0,
+            "v": 0
+        },
+        {
+            "w": 64,
+            "h": 32
+        },
+        {
+            "u": 0,
+            "v": 0,
+            "w": 64,
+            "h": 32
+        }
+    ],
+    "cp3.autoformat": "compact"
+}

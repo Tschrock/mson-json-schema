@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/component_types/mson_plane.json",
+    "title": "mson:plane",
+    "description": "A single-face alternative to mson:box",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "mson:plane"
+        },
+        "position": {
+            "title": "Position",
+            "description": "The 3D position where this plane will appear.",
+            "$ref": "../common.json#/definitions/float3d"
+        },
+        "size": {
+            "title": "Size",
+            "description": "The 2D dimensions of the plane.",
+            "$ref": "../common.json#/definitions/float2d"
+        },
+        "texture": {
+            "title": "Texture",
+            "description": "The texturing to be applied to the plane.\nIf defined, will combine this values with what was inherited, otherwise only the inherited texture is used.",
+            "$ref": "../texture.json"
+        },
+        "mirror": {
+            "title": "Mirror",
+            "description": "The 2D mirroring of this plane's texture along the two major axis.",
+            "$ref": "../common.json#/definitions/bool2d"
+        },
+        "dilate": {
+            "title": "Dilate",
+            "description": "The 2D dilation of the place along the two major axis.",
+            "$ref": "../common.json#/definitions/float2d"
+        },
+        "face": {
+            "title": "Face",
+            "description": "The orientation of this plane.\nCan be either of the 6 faces of a cube, and will be used to inform which axis this plane runs perpendicular to in 3D space.",
+            "type": "string",
+            "enum": [
+                "none",
+                "up",
+                "down",
+                "west",
+                "east",
+                "north",
+                "south"
+            ]
+        }
+    },
+    "patternProperties": {
+        "^__": true
+    },
+    "additionalProperties": false,
+    "defaultSnippets": [
+        {
+            "label": " mson:plane",
+            "bodyText": "{\n    \"type\": \"mson:plane\",\n    $0\n}"
+        }
+    ]
+}

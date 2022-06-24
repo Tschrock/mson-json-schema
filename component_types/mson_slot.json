@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/component_types/mson_slot.json",
+    "title": "mson:slot",
+    "description": "Represents an in-place insertion of another model file's contents with the option to instantiate it to a custom type.",
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": "string",
+            "const": "mson:slot"
+        },
+        "name": {
+            "title": "Name",
+            "description": "The name that this slot is to be exposed as.",
+            "type": "string"
+        },
+        "implementation": {
+            "title": "Implementation",
+            "description": "The Java class to instantiate.",
+            "$ref": "../common.json#/definitions/javaClass"
+        },
+        "data": {
+            "title": "Data",
+            "description": "The contents of this slot either expressed at a map of child elements, or a string pointing to a file.",
+            "oneOf": [
+                {
+                    "$ref": "../common.json#/definitions/identifier"
+                },
+                {
+                    "$ref": "../common.json#/definitions/children"
+                }
+            ]
+        },
+        "locals": {
+            "title": "Locals",
+            "description": "The optional locals block.",
+            "$ref": "../common.json#/definitions/locals"
+        },
+        "texture": {
+            "title": "Texture",
+            "description": "The optional texture with parameters inherited from the slot's outer context.\nThis texture is applied instead of the texture defined in the imported file.",
+            "$ref": "../texture.json"
+        }
+    },
+    "patternProperties": {
+        "^__": true
+    },
+    "additionalProperties": false,
+    "required": [
+        "name"
+    ],
+    "defaultSnippets": [
+        {
+            "label": " mson:slot",
+            "bodyText": "{\n    \"type\": \"mson:slot\",\n    \"name\": \"$1\",\n    $0\n}"
+        }
+    ]
+}

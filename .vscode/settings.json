@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/src/main/resources/**/models/**/*.json"
+            ],
+            "url": "https://json.cp3.es/com.minelittlepony.mson/model.json"
+        }
+    ]
+}

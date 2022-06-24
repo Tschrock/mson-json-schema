@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/expression.json",
+    "title": "Expression",
+    "description": "A variable expression.",
+    "oneOf": [
+        {
+            "type": "number"
+        },
+        {
+            "$ref": "common.json#/definitions/variable"
+        },
+        {
+            "$ref": "#/definitions/operation"
+        }
+    ],
+    "definitions": {
+        "operator": {
+            "title": "Expression Operation",
+            "type": "string",
+            "enum": [
+                "+",
+                "-",
+                "*",
+                "/",
+                "%",
+                "^"
+            ],
+            "oneOf": [
+                {
+                    "title": "Add Operation",
+                    "const": "+"
+                },
+                {
+                    "title": "Subtract Operation",
+                    "const": "-"
+                },
+                {
+                    "title": "Multiply Operation",
+                    "const": "*"
+                },
+                {
+                    "title": "Divide Operation",
+                    "const": "/"
+                },
+                {
+                    "title": "Modulo Operation",
+                    "const": "%"
+                },
+                {
+                    "title": "Exponent Operation",
+                    "const": "^"
+                }
+            ]
+        },
+        "operation": {
+            "title": "Operation",
+            "description": "A math operation.",
+            "type": "array",
+            "items": [
+                {
+                    "$ref": "#"
+                },
+                {
+                    "$ref": "#/definitions/operator"
+                },
+                {
+                    "$ref": "#"
+                }
+            ],
+            "minItems": 3,
+            "maxItems": 3,
+            "additionalItems": false,
+            "defaultSnippets": [
+                {
+                    "label": " a + b",
+                    "bodyText": "[$1, \"+\", $2]"
+                },
+                {
+                    "label": " a - b",
+                    "bodyText": "[$1, \"-\", $2]"
+                },
+                {
+                    "label": " a * b",
+                    "bodyText": "[$1, \"*\", $2]"
+                },
+                {
+                    "label": " a / b",
+                    "bodyText": "[$1, \"/\", $2]"
+                },
+                {
+                    "label": " a % b",
+                    "bodyText": "[$1, \"%\", $2]"
+                },
+                {
+                    "label": " a ^ b",
+                    "bodyText": "[$1, \"^\", $2]"
+                }
+            ],
+            "cp3.autoformat": "compact"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://json.cp3.es/com.minelittlepony.mson/model.json",
+    "title": "Root Model",
+    "description": "A root model.",
+    "type": "object",
+    "properties": {
+        "parent": {
+            "title": "Parent",
+            "description": "Identifies the parent of this model.",
+            "$ref": "common.json#/definitions/identifier"
+        },
+        "texture": {
+            "$ref": "texture.json"
+        },
+        "dilate": {
+            "title": "Dilate",
+            "description": "The default growth (dilation) applied to all boxes defined by components in this file. Note that components may have their own dilation parameter, in which instance that value is *added* to this one.",
+            "$ref": "common.json#/definitions/float3d"
+        },
+        "locals": {
+            "title": "Locals",
+            "description": "Local variables.",
+            "$ref": "common.json#/definitions/locals"
+        },
+        "skeleton": {
+            "title": "Skeleton",
+            "description": "The model's skeleton.",
+            "$ref": "#/definitions/bone"
+        },
+        "data": {
+            "title": "Data",
+            "description": "Child data.",
+            "$ref": "common.json#/definitions/children"
+        }
+    },
+    "patternProperties": {
+        "^__": true
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "bone": {
+            "title": "Bone",
+            "description": "A bone.",
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#/definitions/bone"
+            }
+        }
+    }
+}
